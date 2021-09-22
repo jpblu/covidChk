@@ -1,0 +1,161 @@
+<?php
+/**
+ * Covid-19 CSV Data Loader
+ * Copyright © 2020, Andrea Fusco
+ *
+ * Licensed by AndreaFusco.net
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @Copyright     	Copyright © 2020, Andrea Fusco 
+ * @License       	AndreaFusco.net
+ * @File		  	config.php
+ * @Description	  	File Configuration
+ * @Version		  	1.1.0
+ * @Created		  	2020-03-20
+ * @Updated		  	2020-10-08
+ */
+
+ class GlobalConfig {
+	
+	// Variabili Globali di Connessione al Database
+	
+	public static $dbconnect = array(	'host' => 'localhost',
+										'name' => '',
+										'user' => '',
+										'pswd' => ''
+	);	
+	
+	public static $province = array(
+						'084' => 'Agrigento',
+        				'006' => 'Alessandria',
+        				'042' => 'Ancona',
+        				'007' => 'Aosta',
+        				'051' => 'Arezzo',
+        				'044' => 'Ascoli Piceno',
+        				'005' => 'Asti',
+        				'064' => 'Avellino',
+        				'072' => 'Bari',
+        				'110' => 'Barletta-Andria-Trani',
+        				'025' => 'Belluno',
+        				'062' => 'Benevento',
+        				'016' => 'Bergamo',
+        				'096' => 'Biella',
+        				'037' => 'Bologna',
+        				'021' => 'Bolzano',
+        				'017' => 'Brescia',
+        				'074' => 'Brindisi',
+        				'092' => 'Cagliari',
+        				'085' => 'Caltanissetta',
+        				'070' => 'Campobasso',
+        				'061' => 'Caserta',
+        				'087' => 'Catania',
+        				'079' => 'Catanzaro',
+        				'069' => 'Chieti',
+        				'013' => 'Como',
+        				'078' => 'Cosenza',
+        				'019' => 'Cremona',
+        				'101' => 'Crotone',
+        				'004' => 'Cuneo',
+        				'086' => 'Enna',
+        				'109' => 'Fermo',
+        				'038' => 'Ferrara',
+        				'048' => 'Firenze',
+        				'071' => 'Foggia',
+        				'040' => 'Forlì-Cesena',
+        				'060' => 'Frosinone',
+        				'010' => 'Genova',
+        				'031' => 'Gorizia',
+        				'053' => 'Grosseto',
+        				'008' => 'Imperia',
+        				'094' => 'Isernia',
+        				'066' => 'L\'Aquila',
+        				'011' => 'La Spezia',
+        				'059' => 'Latina',
+        				'075' => 'Lecce',
+        				'097' => 'Lecco',
+        				'049' => 'Livorno',
+        				'098' => 'Lodi',
+        				'046' => 'Lucca',
+        				'043' => 'Macerata',
+        				'020' => 'Mantova',
+        				'045' => 'Massa Carrara',
+        				'077' => 'Matera',
+        				'083' => 'Messina',
+        				'015' => 'Milano',
+        				'036' => 'Modena',
+        				'108' => 'Monza e della Brianza',
+        				'063' => 'Napoli',
+        				'003' => 'Novara',
+        				'091' => 'Nuoro',
+        				'095' => 'Oristano',
+        				'028' => 'Padova',
+        				'082' => 'Palermo',
+        				'034' => 'Parma',
+        				'018' => 'Pavia',
+        				'054' => 'Perugia',
+        				'041' => 'Pesaro e Urbino',
+        				'068' => 'Pescara',
+        				'033' => 'Piacenza',
+        				'050' => 'Pisa',
+        				'047' => 'Pistoia',
+        				'093' => 'Pordenone',
+        				'076' => 'Potenza',
+        				'100' => 'Prato',
+        				'088' => 'Ragusa',
+        				'039' => 'Ravenna',
+        				'080' => 'Reggio Calabria',
+        				'035' => 'Reggio Emilia',
+        				'057' => 'Rieti',
+        				'099' => 'Rimini',
+        				'058' => 'Roma',
+        				'029' => 'Rovigo',
+        				'065' => 'Salerno',
+        				'090' => 'Sassari',
+        				'009' => 'Savona',
+        				'052' => 'Siena',
+        				'089' => 'Siracusa',
+        				'014' => 'Sondrio',
+        				'111' => 'Sud Sardegna',
+        				'073' => 'Taranto',
+        				'067' => 'Teramo',
+        				'055' => 'Terni',
+        				'001' => 'Torino',
+        				'081' => 'Trapani',
+        				'022' => 'Trento',
+        				'026' => 'Treviso',
+        				'032' => 'Trieste',
+        				'030' => 'Udine',
+        				'012' => 'Varese',
+        				'027' => 'Venezia',
+        				'103' => 'Verbano-Cusio-Ossola',
+        				'002' => 'Vercelli,',
+        				'023' => 'Verona',
+        				'102' => 'Vibo Valentia',
+        				'024' => 'Vicenza',
+        				'056' => 'Viterbo'
+	);
+	
+	public static $regioni = array(
+						'01' => 'PIEMONTE',
+						'02' => 'VALLE D’AOSTA',
+						'03' => 'LOMBARDIA',
+						'04' => 'TRENTINO ALTO ADIGE',
+						'05' => 'VENETO',
+						'06' => 'FRIULI VENEZIA GIULIA',
+						'07' => 'LIGURIA',
+						'08' => 'EMILIA ROMAGNA',
+						'09' => 'TOSCANA',
+						'10' => 'UMBRIA',
+						'11' => 'MARCHE',
+						'12' => 'LAZIO',
+						'13' => 'ABRUZZO',
+						'14' => 'MOLISE',
+						'15' => 'CAMPANIA',
+						'16' => 'PUGLIA',
+						'17' => 'BASILICATA',
+						'18' => 'CALABRIA',
+						'19' => 'SICILIA',
+						'20' => 'SARDEGNA'
+	);
+}
+?>
