@@ -1,0 +1,5 @@
+lib/config.php
+doc/*.*
+!doc/*.pdf
+file/*.*
+logs/*.*

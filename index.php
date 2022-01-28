@@ -14,7 +14,7 @@
 	<title>COVID-19 CSV Data Loader</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css?v=461" rel="stylesheet">
 
 	<!-- Font-Awesome Icons -->
 	<link href="css/fontawesome.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 	<script src="js/jquery-3.6.0.min.js"></script>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js?v=461"></script>
 	
 	<!-- Custom styles for this template -->
 	<link href="css/offcanvas.css" rel="stylesheet">
