@@ -9,24 +9,29 @@
  * @License       	Creative Commons By-Nc-Nd (http://creativecommons.org/licenses/by-nc-nd/3.0/)
  * @File		  	cv19Monitor.js
  * @Description	  	CV-19 Monitor
- * @Version		  	1.1.0
+ * @Version		  	1.2.0
  * @Created		  	2020-03-24
- * @Updated		  	2021-05-24
+ * @Updated		  	2022-01-28
  */
  
 $(document).ready(function() {
 	
+	$("#startdate").datepicker({ dateFormat: "yy-mm-dd", minDate: '2020-02-24' });
+	$("#enddate").datepicker({ dateFormat: "yy-mm-dd", minDate: '2020-02-25' });
+	
 	var stcodprov = $("#codprov").val();
-	getCV19Monitor(stcodprov);
-	getCV19Increment(stcodprov);
-	getCV193DayInc(stcodprov);
+	var startdate = $("#startdate").val();
+	var enddate = $("#enddate").val();
+	getCV19Monitor(stcodprov,startdate,enddate);
+	getCV19Increment(stcodprov,startdate,enddate);
+	getCV193DayInc(stcodprov,startdate,enddate);
 	
 	//Index - Last X Days Download Graph - Incremento Totale per Provincia
-	function getCV19Monitor(prov) { 
+	function getCV19Monitor(prov,startdate,enddate) {
 		$.ajax({
 			type:  'POST',
 			url:   'lib/getCV19MonitorData.php',
-			data: { prov : prov }
+			data: { prov : prov, startdate : startdate, enddate : enddate }
 		})
 		.done(function(json)	{				
 			var jobj = JSON.parse(json);
@@ -59,7 +64,7 @@ $(document).ready(function() {
 					plugins: {
 						title: {
 							display: true,
-							text: 'Incremento Totale Nuove Infezioni Covid-19 per Provincia (dal 24/2)'
+							text: 'Incremento Totale Nuove Infezioni Covid-19 per Provincia'
 						},
 						legend: {
 							display: false,
@@ -79,11 +84,11 @@ $(document).ready(function() {
 	}
 	
 	//Index - Last X Increment Download Graph - Andamento Giornaliero per Provincia
-	function getCV19Increment(prov) { 
+	function getCV19Increment(prov,startdate,enddate) {
 		$.ajax({
 			type:  'POST',
 			url:   'lib/getCV19IncrementData.php',
-			data: { prov : prov }
+			data: { prov : prov, startdate : startdate, enddate : enddate }
 		})
 		.done(function(json)	{				
 			var jobj = JSON.parse(json);
@@ -115,7 +120,7 @@ $(document).ready(function() {
 					plugins: {						
 						title: {
 							display: true,
-							text: 'Andamento Giornaliero Nuove Infezioni Covid-19 per Provincia (dal 24/2)'
+							text: 'Andamento Giornaliero Nuove Infezioni Covid-19 per Provincia'
 						},
 						legend: {
 							display: false,
@@ -135,11 +140,11 @@ $(document).ready(function() {
 	}
 	
 	//Index - Last X 3Day Increment Download Graph - Andamento 3 Giorni per Provincia
-	function getCV193DayInc(prov) { 
+	function getCV193DayInc(prov,startdate,enddate) { 
 		$.ajax({
 			type:  'POST',
 			url:   'lib/getCV19Inc3DayData.php',
-			data: { prov : prov }
+			data: { prov : prov, startdate : startdate, enddate : enddate }
 		})
 		.done(function(json)	{				
 			var jobj = JSON.parse(json);
@@ -172,7 +177,7 @@ $(document).ready(function() {
 					plugins: {
 						title: {
 							display: true,
-							text: 'Andamento Medio su 3 giorni Nuove Infezioni Covid-19 per Provincia (dal 24/2)'
+							text: 'Andamento Medio su 3 giorni Nuove Infezioni Covid-19 per Provincia'
 						},
 						legend: {
 							display: false,
@@ -192,7 +197,10 @@ $(document).ready(function() {
 	}
 	
 	$("#page_refresh").on("click",function() {
-		window.location.reload();
+		var newstart = $("#startdate").val();
+		var newend = $("#enddate").val();
+		var codprov = $("#codprov").val();
+		window.location.href='index.php?prov='+codprov+'&startdate='+newstart+'&enddate='+newend;
 	});
 	
 	$("#codprov").on("change", function() {
