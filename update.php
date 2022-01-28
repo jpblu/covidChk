@@ -18,7 +18,7 @@
 require("lib/config.php");
 require("lib/logs.php");
 
-//mysqlimport --ignore-lines=1 --fields-terminated-by=, --verbose --local --delete -u USR --password=PWS DBN /home/slepu/public_html/andreafusco.net/covid19chk/file/covid19_province.csv
+//mysqlimport --ignore-lines=1 --fields-terminated-by=, --verbose --local --delete -u slepu_afusco --password=uIXS00jsZ3kg slepu_afusconet /home/slepu/public_html/andreafusco.net/covid19chk/file/covid19_province.csv
 
 //Effettuo Upload del file
 echo "Carico i file...              ";
@@ -87,6 +87,6 @@ $mysqli->query("UPDATE covid19_regioni SET DATA = SUBSTRING(DATA,1,10);");
 echo "OK!<br>";
 
 $logtxt = "CSV Update OK";
-Logs::writeBatchLog("logs/cronLog.txt", $text);
+Logs::writeBatchLog("logs/cronLog.txt", $logtxt);
  
 ?>

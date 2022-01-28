@@ -8,8 +8,8 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="PN Server Status">
-	<meta name="author" content="CR00753">
+	<meta name="description" content="COVID_19 CSV Data Loader">
+	<meta name="author" content="Andrea Fusco">
 
 	<title>COVID-19 CSV Data Loader</title>
 
@@ -30,7 +30,7 @@
 	<script src="js/offcanvas.js"></script>
 	<link href="css/datatables.min.css" rel="stylesheet">
 	<script src="js/datatables.min.js"></script>
-	<script src="js/cv19lists.js?v=110"></script>
+	<script src="js/cv19lists.js?v=120"></script>
 
 </head>
 
@@ -51,7 +51,9 @@
 	
 		<? $start = date('Y-m-d', strtotime('-14 day', time()));
 		   $end = date('Y-m-d');
-		   $newtot = SStats::getCV19TotNaz01($start,$end); ?>
+		   $newtot = SStats::getCV19TotNaz01($start,$end);
+		   if (is_null($newtot)) { $newtot = 0; }
+		?>
 	
 		<nav>
 			<ol class="breadcrumb">

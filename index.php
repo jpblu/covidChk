@@ -8,28 +8,34 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="PN Server Status">
-	<meta name="author" content="CR00753">
+	<meta name="description" content="COVID_19 CSV Data Loader">
+	<meta name="author" content="Andrea Fusco">
 
 	<title>COVID-19 CSV Data Loader</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="css/bootstrap.min.css?v=461" rel="stylesheet">
+	<link href="css/jquery-ui.min.css?v=1131" rel="stylesheet">
 
 	<!-- Font-Awesome Icons -->
 	<link href="css/fontawesome.css" rel="stylesheet">
 
 	<!-- JQuery Core -->
 	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/jquery-ui.min.js?v=1131"></script>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="js/bootstrap.min.js?v=461"></script>
+	
+	<!-- JQuery Plugins -->
+	<script src="js/jquery.validate.min.js?v=1193"></script>
+	<script src="js/additional-methods.min.js?v=1193"></script>
 	
 	<!-- Custom styles for this template -->
 	<link href="css/offcanvas.css" rel="stylesheet">
 	<script src="js/offcanvas.js"></script>
 	<script src="js/chart.min.js?v=330"></script>
-	<script src="js/cv19monitor.js?v=110"></script>
+	<script src="js/cv19monitor.js?v=120"></script>
 
 </head>
 
@@ -38,10 +44,21 @@
 	<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
 	
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		
+			<?	if (isset($_GET['startdate']) && isset($_GET['enddate'])) {
+					$startdate = $_GET['startdate'];
+					$enddate = $_GET['enddate'];
+				} else {
+					$startdate = date("Y-m-d", strtotime(date("Y-m-d", strtotime( date("Y-m-d")))."-3 month"));
+					$enddate = date('Y-m-d');
+				}
+			?>
 	
 			<a class="navbar-brand" href="#">Covid-19 CSV Data Loader</a>
-			<a class="btn btn-primary my-2 my-sm-0 ml-auto mr-2" href="lists.php">Statistiche Incrementi Regioni/Province</a>
-			<button class="btn btn-outline-success my-2 my-sm-0" type="button" id="page_refresh" title="Aggiorna"><i class="fas fa-sync"></i></button>
+			<input type="text" class="form-control col-1 my-2 my-sm-0 mr-2 ml-auto" id="startdate" value="<?=$startdate; ?>">
+			<input type="text" class="form-control col-1 my-2 my-sm-0 mr-2" id="enddate" value="<?=$enddate; ?>">
+			<button class="btn btn-outline-success my-2 mr-2 my-sm-0" type="button" id="page_refresh" title="Aggiorna"><i class="fas fa-sync"></i></button>
+			<a class="btn btn-primary my-2 my-sm-0" href="lists.php">Statistiche Incrementi Regioni/Province</a>
 			
 		</div>
 		
@@ -53,7 +70,7 @@
 		
 			<!-- Dati Provincia -->
 			<?	if (isset($_GET['prov'])) { $codprov = $_GET['prov']; } else { $codprov = '034'; }
-			    $provdata = SStats::getCV19Table($codprov);
+			    $provdata = SStats::getCV19Table($codprov,$startdate,$enddate);
 				$regdata = SStats::getCV19PercTmp($provdata[0]['codice_regione']);
 				$regvacc = SStats::getCV19Vacc($provdata[0]['codice_regione']);
 			?>
