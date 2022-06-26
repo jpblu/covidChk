@@ -8,11 +8,11 @@
  *
  * @Copyright     	Copyright © 2020, Andrea Fusco
  * @License       	Creative Commons By-Nc-Nd (http://creativecommons.org/licenses/by-nc-nd/3.0/)
- * @File		  	updated.php
+ * @File		  	update_oniline.php
  * @Description	  	Refresh Data DB from PcM-DpC (https://github.com/pcm-dpc/COVID-19)
- * @Version		  	1.1.0
+ * @Version		  	1.2.0
  * @Created		  	2020-03-20
- * @Updated		  	2021-09-22
+ * @Updated		  	2022-06-26
  */
  
 require("lib/config.php");
@@ -55,41 +55,44 @@ echo "OK!<br>";
 //Ricarico la tabella covid19_province, covid19_regioni e covid19_vaccini
 echo "Carico i nuovi dati...         ";
 
-$csv = array_map('str_getcsv', file('file/covid19_province.csv'));
-array_walk($csv, function(&$a) use ($csv) {
-  $a = array_combine($csv[0], $a);
-});
-array_shift($csv); # remove column header
+$rows = array_map('str_getcsv', file('file/covid19_province.csv'));
+$header = array_shift($rows);
+$csv = array();
+foreach ($rows as $row) {
+  $csv[] = array_combine($header, $row);
+}
 
 //print_r($csv);
 
 foreach($csv as $key => $value) {
-	if (!$mysqli->query('INSERT covid19_province VALUES("'.$csv[$key]['data'].'","'.$csv[$key]['stato'].'","'.$csv[$key]['codice_regione'].'","'.$csv[$key]['denominazione_regione'].'","'.$csv[$key]['codice_provincia'].'","'.htmlentities($csv[$key]['denominazione_provincia']).'","'.$csv[$key]['sigla_provincia'].'","'.$csv[$key]['lat'].'","'.$csv[$key]['long'].'","'.$csv[$key]['totale_casi'].'")')) {
+	if (!$mysqli->query('INSERT covid19_province VALUES("'.substr($csv[$key]['data'],0,10).'","'.$csv[$key]['stato'].'","'.$csv[$key]['codice_regione'].'","'.$csv[$key]['denominazione_regione'].'","'.$csv[$key]['codice_provincia'].'","'.htmlentities($csv[$key]['denominazione_provincia']).'","'.$csv[$key]['sigla_provincia'].'","'.$csv[$key]['lat'].'","'.$csv[$key]['long'].'","'.$csv[$key]['totale_casi'].'")')) {
 	    echo $mysqli->error;
 		exit();
 	}
 }
 
-$csv = array_map('str_getcsv', file('file/covid19_regioni.csv'));
-array_walk($csv, function(&$a) use ($csv) {
-  $a = array_combine($csv[0], $a);
-});
-array_shift($csv); # remove column header
+$rows = array_map('str_getcsv', file('file/covid19_regioni.csv'));
+$header = array_shift($rows);
+$csv = array();
+foreach ($rows as $row) {
+  $csv[] = array_combine($header, $row);
+}
 
 //print_r($csv);
 
 foreach($csv as $key => $value) {
-	if (!$mysqli->query('INSERT covid19_regioni VALUES("'.$csv[$key]['data'].'","'.$csv[$key]['stato'].'","'.$csv[$key]['codice_regione'].'","'.htmlentities($csv[$key]['denominazione_regione']).'","'.$csv[$key]['lat'].'","'.$csv[$key]['long'].'","'.$csv[$key]['ricoverati_con_sintomi'].'","'.$csv[$key]['terapia_intensiva'].'","'.$csv[$key]['totale_ospedalizzati'].'","'.$csv[$key]['isolamento_domiciliare'].'","'.$csv[$key]['totale_positivi'].'","'.$csv[$key]['variazione_totale_positivi'].'","'.$csv[$key]['nuovi_positivi'].'","'.$csv[$key]['dimessi_guariti'].'","'.$csv[$key]['deceduti'].'","'.$csv[$key]['casi_da_sospetto_diagnostico'].'","'.$csv[$key]['casi_da_screening'].'","'.$csv[$key]['totale_casi'].'","'.$csv[$key]['tamponi'].'","'.$csv[$key]['casi_testati'].'","'.htmlentities($csv[$key]['note']).'")')) {
+	if (!$mysqli->query('INSERT covid19_regioni VALUES("'.substr($csv[$key]['data'],0,10).'","'.$csv[$key]['stato'].'","'.$csv[$key]['codice_regione'].'","'.htmlentities($csv[$key]['denominazione_regione']).'","'.$csv[$key]['lat'].'","'.$csv[$key]['long'].'","'.$csv[$key]['ricoverati_con_sintomi'].'","'.$csv[$key]['terapia_intensiva'].'","'.$csv[$key]['totale_ospedalizzati'].'","'.$csv[$key]['isolamento_domiciliare'].'","'.$csv[$key]['totale_positivi'].'","'.$csv[$key]['variazione_totale_positivi'].'","'.$csv[$key]['nuovi_positivi'].'","'.$csv[$key]['dimessi_guariti'].'","'.$csv[$key]['deceduti'].'","'.$csv[$key]['casi_da_sospetto_diagnostico'].'","'.$csv[$key]['casi_da_screening'].'","'.$csv[$key]['totale_casi'].'","'.$csv[$key]['tamponi'].'","'.$csv[$key]['casi_testati'].'","'.htmlentities($csv[$key]['note']).'")')) {
 	    echo $mysqli->error;
 		exit();
 	}
 }
 
-$csv = array_map('str_getcsv', file('file/covid19_vaccini.csv'));
-array_walk($csv, function(&$a) use ($csv) {
-  $a = array_combine($csv[0], $a);
-});
-array_shift($csv); # remove column header
+$rows = array_map('str_getcsv', file('file/covid19_vaccini.csv'));
+$header = array_shift($rows);
+$csv = array();
+foreach ($rows as $row) {
+  $csv[] = array_combine($header, $row);
+}
 
 //print_r($csv);
 
