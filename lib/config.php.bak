@@ -6,25 +6,27 @@
  * Licensed by AndreaFusco.net
  * Redistributions of files must retain the above copyright notice.
  *
- * @Copyright     	Copyright © 2020, Andrea Fusco 
+ * @Copyright     	Copyright © 2020, Andrea Fusco
  * @License       	AndreaFusco.net
- * @File		  	config.php
+ * @File		  			config.php
  * @Description	  	File Configuration
- * @Version		  	1.1.0
- * @Created		  	2020-03-20
- * @Updated		  	2020-10-08
+ * @Version		  		1.2.1
+ * @Created		  		2020-03-20
+ * @Updated		  		2024-08-24
  */
 
  class GlobalConfig {
-	
+
 	// Variabili Globali di Connessione al Database
-	
+
 	public static $dbconnect = array(	'host' => 'localhost',
 										'name' => '',
 										'user' => '',
 										'pswd' => ''
-	);	
-	
+	);
+
+	public static $auth_token = '';
+
 	public static $province = array(
 						'084' => 'Agrigento',
         				'006' => 'Alessandria',
@@ -134,7 +136,7 @@
         				'024' => 'Vicenza',
         				'056' => 'Viterbo'
 	);
-	
+
 	public static $regioni = array(
 						'01' => 'PIEMONTE',
 						'02' => 'VALLE D’AOSTA',
