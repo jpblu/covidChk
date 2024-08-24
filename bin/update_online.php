@@ -15,8 +15,8 @@
  * @Updated		  		2024-08-24
  */
 
-require("lib/config.php");
-require("lib/logs.php");
+require("../lib/config.php");
+require("../lib/logs.php");
 
 if (isset($_POST['token']) && $_POST['token'] == GlobalConfig::$auth_token) {
 
