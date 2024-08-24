@@ -37,7 +37,7 @@ CREATE TABLE `covid19_province` (
   `denominazione_provincia` varchar(36) DEFAULT NULL,
   `sigla_provincia` varchar(2) DEFAULT NULL,
   `lat` varchar(11) DEFAULT NULL,
-  `long` varchar(11) DEFAULT NULL,
+  `lng` varchar(11) DEFAULT NULL,
   `totale_casi` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -45,7 +45,7 @@ CREATE TABLE `covid19_province` (
 -- Dump dei dati per la tabella `covid19_province`
 --
 
-INSERT INTO `covid19_province` (`data`, `stato`, `codice_regione`, `denominazione_regione`, `codice_provincia`, `denominazione_provincia`, `sigla_provincia`, `lat`, `long`, `totale_casi`) VALUES
+INSERT INTO `covid19_province` (`data`, `stato`, `codice_regione`, `denominazione_regione`, `codice_provincia`, `denominazione_provincia`, `sigla_provincia`, `lat`, `lng`, `totale_casi`) VALUES
 ('2020-02-24', 'ITA', '13', 'Abruzzo', '069', 'Chieti', 'CH', '42.35103167', '14.16754574', 0),
 ('2020-02-24', 'ITA', '13', 'Abruzzo', '066', 'L\'Aquila', 'AQ', '42.35122196', '13.39843823', 0),
 ('2020-02-24', 'ITA', '13', 'Abruzzo', '068', 'Pescara', 'PE', '42.46458398', '14.21364822', 0),

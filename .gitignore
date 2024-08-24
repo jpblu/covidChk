@@ -1,5 +1,8 @@
 lib/config.php
-doc/*.*
-!doc/*.pdf
+docs/*.*
+!docs/*.pdf
+!docs/*.sql
 file/*.*
 logs/*.*
+.DS_Store
+logs
