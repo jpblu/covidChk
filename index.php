@@ -16,27 +16,27 @@
 	<title>COVID-19 CSV Data Loader</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="css/bootstrap.min.css?v=461" rel="stylesheet">
-	<link href="css/jquery-ui.min.css?v=1131" rel="stylesheet">
+	<link href="css/bootstrap.min.css?v=462" rel="stylesheet">
+	<link href="css/jquery-ui.min.css?v=1140" rel="stylesheet">
 
 	<!-- Font-Awesome Icons -->
-	<link href="css/fontawesome.css" rel="stylesheet">
+	<link href="css/all.min.css?v=660" rel="stylesheet">
 
 	<!-- JQuery Core -->
-	<script src="js/jquery-3.6.0.min.js"></script>
-	<script src="js/jquery-ui.min.js?v=1131"></script>
+	<script src="js/jquery-3.7.1.min.js"></script>
+	<script src="js/jquery-ui.min.js?v=1140"></script>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="js/bootstrap.min.js?v=461"></script>
+	<script src="js/bootstrap.min.js?v=462"></script>
 
 	<!-- JQuery Plugins -->
-	<script src="js/jquery.validate.min.js?v=1193"></script>
-	<script src="js/additional-methods.min.js?v=1193"></script>
+	<script src="js/jquery.validate.min.js?v=1195"></script>
+	<script src="js/additional-methods.min.js?v=1195"></script>
 
 	<!-- Custom styles for this template -->
 	<link href="css/offcanvas.css" rel="stylesheet">
 	<script src="js/offcanvas.js"></script>
-	<script src="js/chart.min.js?v=330"></script>
+	<script type="module" src="js/chart.umd.js?v=444"></script>
 	<script src="js/cv19monitor.js?v=120"></script>
 
 </head>
@@ -47,11 +47,12 @@
 
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
-			<?	if (isset($_GET['startdate']) && isset($_GET['enddate'])) {
+			<?
+				if (isset($_GET['startdate']) && isset($_GET['enddate'])) {
 					$startdate = $_GET['startdate'];
 					$enddate = $_GET['enddate'];
 				} else {
-					$startdate = date("Y-m-d", strtotime(date("Y-m-d", strtotime( date("Y-m-d")))."-3 month"));
+					$startdate = date("Y-m-d", strtotime(date("Y-m-d", strtotime( date("Y-m-d")))."-1 month"));
 					$enddate = date('Y-m-d');
 				}
 			?>

@@ -2,8 +2,10 @@
 <html>
 <head>
 
-	<?	include('lib/config.php');
+	<?
+		include('lib/config.php');
 		include('lib/sstat.php');
+		include('version.php');
 	?>
 
 	<meta charset="utf-8">
@@ -14,22 +16,22 @@
 	<title>COVID-19 CSV Data Loader</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="css/bootstrap.min.css?v=461" rel="stylesheet">
+	<link href="css/bootstrap.min.css?v=462" rel="stylesheet">
 
 	<!-- Font-Awesome Icons -->
-	<link href="css/fontawesome.css" rel="stylesheet">
+	<link href="css/all.min.css?v=660" rel="stylesheet">
 
 	<!-- JQuery Core -->
-	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/jquery-3.7.1.min.js"></script>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="js/bootstrap.min.js?v=461"></script>
+	<script src="js/bootstrap.min.js?v=462"></script>
 
 	<!-- Custom styles for this template -->
 	<link href="css/offcanvas.css" rel="stylesheet">
 	<script src="js/offcanvas.js"></script>
-	<link href="css/datatables.min.css" rel="stylesheet">
-	<script src="js/datatables.min.js"></script>
+	<link href="css/datatables.min.css?v=214" rel="stylesheet">
+	<script src="js/datatables.min.js?v=214"></script>
 	<script src="js/cv19lists.js?v=120"></script>
 
 </head>
