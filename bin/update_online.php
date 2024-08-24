@@ -23,20 +23,20 @@ if (isset($_POST['token']) && $_POST['token'] == GlobalConfig::$auth_token) {
 	//Effettuo Upload del file
 	echo "Carico i file...";
 	flush();
-	unlink('file/covid19_province.csv');
-	unlink('file/covid19_regioni.csv');
-	unlink('file/covid19_vaccini.csv');
+	unlink('../file/covid19_province.csv');
+	unlink('../file/covid19_regioni.csv');
+	unlink('../file/covid19_vaccini.csv');
 
 	$url = 'https://github.com/pcm-dpc/COVID-19/raw/master/dati-province/dpc-covid19-ita-province.csv';
-	$img_province = 'file/covid19_province.csv';
+	$img_province = '../file/covid19_province.csv';
 	file_put_contents($img_province, file_get_contents($url));
 
 	$url = 'https://github.com/pcm-dpc/COVID-19/raw/master/dati-regioni/dpc-covid19-ita-regioni.csv';
-	$img_regioni = 'file/covid19_regioni.csv';
+	$img_regioni = '../file/covid19_regioni.csv';
 	file_put_contents($img_regioni, file_get_contents($url));
 
 	$url = 'https://github.com/italia/covid19-opendata-vaccini/raw/master/dati/vaccini-summary-latest.csv';
-	$img_vaccini = 'file/covid19_vaccini.csv';
+	$img_vaccini = '../file/covid19_vaccini.csv';
 	file_put_contents($img_vaccini, file_get_contents($url));
 
 	echo " OK!<br>";
